@@ -1,0 +1,13 @@
+-- Dynamic Past Six Months Revenue per Order Source
+
+SELECT
+  OrderSource,
+  SUM(TotalSold) AS Revenue
+FROM
+  Sales
+WHERE
+  OrderDate >= DATEADD(MONTH, -6, GETDATE())
+GROUP BY
+  OrderSource
+ORDER BY
+  Revenue DESC;
