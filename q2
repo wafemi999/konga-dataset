@@ -1,0 +1,17 @@
+-- 3rd, 4th, & 5th Top Selling Product Category by Revenue in 2021
+
+SELECT
+  Category.CategoryName,
+  SUM(Sales.TotalSold) AS Revenue
+FROM
+  Sales
+JOIN
+  Category ON Sales.ProductNumber = Category.ProductNumber
+WHERE
+  YEAR(Sales.OrderDate) = 2021
+GROUP BY
+  Category.CategoryName
+ORDER BY
+  Revenue DESC
+OFFSET 2 ROWS
+FETCH NEXT 3 ROWS ONLY;
