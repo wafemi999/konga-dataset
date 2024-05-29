@@ -1,0 +1,22 @@
+--  3 Days Moving Average of Total Quantity Sold by Each Employee in April 2021
+
+SELECT
+  E.EmployeeFullName,
+  S.OrderDate,
+  AVG(SUM(S.Quantity)) OVER (
+    PARTITION BY E.EmployeeFullName
+    ORDER BY S.OrderDate
+    ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+  ) AS MovingAverageQuantity
+FROM
+  Sales S
+JOIN
+  Employee E ON S.SalesEmployeeID = E.EmployeeID
+WHERE
+  S.OrderDate BETWEEN '2021-04-01' AND '2021-04-30'
+GROUP BY
+  E.EmployeeFullName,
+  S.OrderDate
+ORDER BY
+  E.EmployeeFullName,
+  S.OrderDate;
