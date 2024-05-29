@@ -1,0 +1,3 @@
+Tools:
+SQL
+Power bi
