@@ -1,0 +1,10 @@
+-- Unique Customers in Lagos State with Username from Email
+
+SELECT
+  DISTINCT CustomerName,
+  Email,
+  SUBSTRING(Email, 1, CHARINDEX('@', Email) - 1) AS Username
+FROM
+  Sales
+WHERE
+  State = 'Lagos';
