@@ -1,3 +1,3 @@
-Tools:
-SQL
-Power bi
+## Tools:
+SQL.
+Power bi.
